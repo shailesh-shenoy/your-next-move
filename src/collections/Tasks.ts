@@ -29,6 +29,36 @@ export const Tasks: CollectionConfig = {
                 update: () => false,
                 // read: adminOnlyField,
             },
+        },
+        {
+            name: "schedules",
+            type: "array",
+            fields: [
+                {
+                    name: "status",
+                    type: "select",
+                    options: [
+                        { label: "Pending", value: "pending" },
+                        { label: "Skipped", value: "skipped" },
+                        { label: "Completed", value: "completed" },
+                    ],
+                },
+                {
+                    name: "note",
+                    type: "textarea",
+                    required: false,
+                },
+                {
+                    name: "startTime",
+                    type: "date",
+                    required: false,
+                },
+                {
+                    name: "endTime",
+                    type: "date",
+                    required: false,
+                }
+            ]
         }
     ],
 }

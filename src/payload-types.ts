@@ -67,6 +67,15 @@ export interface Task {
   id: string;
   title: string;
   createdBy: string | User;
+  schedules?:
+    | {
+        status?: ('pending' | 'skipped' | 'completed') | null;
+        note?: string | null;
+        startTime?: string | null;
+        endTime?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
