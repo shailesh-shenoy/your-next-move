@@ -15,12 +15,14 @@
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "beta",
+    "@payloadcms/email-nodemailer": "3.0.0-beta.68",
     "@payloadcms/next": "beta",
     "@payloadcms/plugin-cloud": "beta",
     "@payloadcms/richtext-lexical": "beta",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.0-canary.53",
+    "nodemailer": "^6.9.14",
     "payload": "beta",
     "react": "^19.0.0-rc-6230622a1a-20240610",
     "react-dom": "^19.0.0-rc-6230622a1a-20240610",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
     "eslint": "^8",
