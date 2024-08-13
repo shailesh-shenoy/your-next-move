@@ -35,6 +35,11 @@ export const Users: CollectionConfig = {
         create: adminOnlyField,
         update: adminOnlyField,
       },
+    },
+    {
+      name: "tags",
+      type: "text",
+      hasMany: true
     }
   ],
 }

@@ -48,6 +48,7 @@ export interface UserAuthOperations {
 export interface User {
   id: string;
   role?: ('admin' | 'user') | null;
+  tags?: string[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -67,15 +68,11 @@ export interface Task {
   id: string;
   title: string;
   createdBy: string | User;
-  schedules?:
-    | {
-        status?: ('pending' | 'skipped' | 'completed') | null;
-        note?: string | null;
-        startTime?: string | null;
-        endTime?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  status?: ('pending' | 'skipped' | 'completed') | null;
+  note?: string | null;
+  startTime?: string | null;
+  endTime?: string | null;
+  tag?: string | null;
   updatedAt: string;
   createdAt: string;
 }

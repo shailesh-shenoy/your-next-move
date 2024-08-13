@@ -1,5 +1,6 @@
 import type { CollectionConfig, User } from 'payload'
 import { adminOnlyField, adminOrCreator, adminOrCreatorWrite, adminOrUser, anyone } from './access/access-control'
+import { afterTaskChange } from './hooks/hooks'
 
 export const Tasks: CollectionConfig = {
     slug: 'tasks',
@@ -31,34 +32,47 @@ export const Tasks: CollectionConfig = {
             },
         },
         {
-            name: "schedules",
-            type: "array",
-            fields: [
-                {
-                    name: "status",
-                    type: "select",
-                    options: [
-                        { label: "Pending", value: "pending" },
-                        { label: "Skipped", value: "skipped" },
-                        { label: "Completed", value: "completed" },
-                    ],
-                },
-                {
-                    name: "note",
-                    type: "textarea",
-                    required: false,
-                },
-                {
-                    name: "startTime",
-                    type: "date",
-                    required: false,
-                },
-                {
-                    name: "endTime",
-                    type: "date",
-                    required: false,
+            name: "status",
+            type: "select",
+            options: [
+                { label: "Pending", value: "pending" },
+                { label: "Skipped", value: "skipped" },
+                { label: "Completed", value: "completed" },
+            ],
+        },
+        {
+            name: "note",
+            type: "textarea",
+            required: false,
+        },
+        {
+            name: "startTime",
+            type: "date",
+            required: false,
+            admin: {
+                date: {
+                    pickerAppearance: 'dayAndTime'
                 }
-            ]
+            }
+        },
+        {
+            name: "endTime",
+            type: "date",
+            required: false,
+            admin: {
+                date: {
+                    pickerAppearance: 'dayAndTime'
+                }
+            }
+        },
+        {
+            name: "tag",
+            type: "text",
+            required: false,
+            defaultValue: "untagged"
         }
     ],
+    hooks: {
+        afterChange: [afterTaskChange]
+    }
 }
