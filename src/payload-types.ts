@@ -48,7 +48,13 @@ export interface UserAuthOperations {
 export interface User {
   id: string;
   role?: ('admin' | 'user') | null;
-  tags?: string[] | null;
+  tags?:
+    | {
+        tag: string;
+        color?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   email: string;

@@ -1,5 +1,11 @@
 import type { CollectionConfig } from 'payload'
-import { adminOnly, adminOnlyField, adminOrSelf, adminPanelAccess, anyone } from './access/access-control'
+import {
+  adminOnly,
+  adminOnlyField,
+  adminOrSelf,
+  adminPanelAccess,
+  anyone,
+} from './access/access-control'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -16,20 +22,20 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
-      name: "role",
-      type: "select",
+      name: 'role',
+      type: 'select',
       saveToJWT: true,
       options: [
         {
-          label: "Admin",
-          value: "admin",
+          label: 'Admin',
+          value: 'admin',
         },
         {
-          label: "User",
-          value: "user",
+          label: 'User',
+          value: 'user',
         },
       ],
-      defaultValue: "user",
+      defaultValue: 'user',
       access: {
         read: adminOnlyField,
         create: adminOnlyField,
@@ -37,9 +43,22 @@ export const Users: CollectionConfig = {
       },
     },
     {
-      name: "tags",
-      type: "text",
-      hasMany: true
-    }
+      name: 'tags',
+      type: 'array',
+      defaultValue: [],
+      required: false,
+      fields: [
+        {
+          name: 'tag',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'color',
+          type: 'text',
+          required: false,
+        },
+      ],
+    },
   ],
 }
